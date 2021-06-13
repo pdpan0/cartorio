@@ -13,19 +13,18 @@ public class Office {
     private Long id;
     @Column(nullable = false)
     private String name;
-
-    /*
-        Configurações da coluna.
-        fetch -> é utilizado para realizar o JOIN on-demand.
-        cascade -> é utilizado para reduzir operações no H2.
-        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}
-    */
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "address_id")
     private Address address;
 
+/*
+    Configurações da coluna.
+    cascade -> é utilizado para reduzir operações no H2.
+*/
+
 //  Constructors
+    public Office() {}
+
     public Office(Long id, String name, Address address) {
         this.id = id;
         this.name = name;

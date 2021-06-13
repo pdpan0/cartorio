@@ -18,6 +18,7 @@ public class Certificate {
     private Office office;
 
 //  Constructors
+    public Certificate() {}
     public Certificate(Long id, String name, Office office) {
         this.id = id;
         this.name = name;

@@ -1,0 +1,24 @@
+CREATE TABLE address (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    street VARCHAR(128),
+    city VARCHAR(128),
+    state VARCHAR(128),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE office (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(128),
+    address_id INTEGER,
+    state VARCHAR(128),
+    PRIMARY KEY (id)
+    FOREIGN KEY (address_id) REFERENCES address(address_id)
+);
+
+CREATE TABLE certificate (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(128),
+    office_id INTEGER,
+    PRIMARY KEY (id)
+    FOREIGN KEY (office_id) REFERENCES office(office_id)
+);

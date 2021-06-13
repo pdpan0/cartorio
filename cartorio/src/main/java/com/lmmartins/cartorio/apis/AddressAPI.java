@@ -1,4 +1,4 @@
-package com.lmmartins.cartorio.controllers;
+package com.lmmartins.cartorio.apis;
 
 import com.lmmartins.cartorio.models.Address;
 import com.lmmartins.cartorio.repositories.IAddressRepository;
@@ -12,19 +12,19 @@ import static org.springframework.http.ResponseEntity.*;
 
 @RestController
 @RequestMapping("/v1/address")
-public class AddressControllers{
+public class AddressAPI {
     @Autowired
     private IAddressRepository repository;
+
+    @DeleteMapping("/{addressId}")
+    public ResponseEntity deleteAddressById(@PathVariable("addressId") Long addressId) {
+        return ok().build();
+    }
 
     @GetMapping
     public ResponseEntity getAddresses() {
         List<Address> addresses = repository.findAll();
         return addresses.isEmpty() ? noContent().build() : ok(addresses);
-    }
-
-    @DeleteMapping("/{addressId}")
-    public ResponseEntity deleteAddressById(@PathVariable("addressId") Long addressId) {
-        return ok().build();
     }
 
     @PostMapping

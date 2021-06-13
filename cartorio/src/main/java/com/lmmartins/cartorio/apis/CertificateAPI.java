@@ -1,11 +1,11 @@
-package com.lmmartins.cartorio.controllers;
+package com.lmmartins.cartorio.apis;
 
 import com.lmmartins.cartorio.repositories.ICertificateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CertificateControllers {
+public class CertificateAPI {
     @Autowired
     private ICertificateRepository repository;
 }

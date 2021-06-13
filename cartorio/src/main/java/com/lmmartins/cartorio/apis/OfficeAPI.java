@@ -1,48 +1,44 @@
-package com.lmmartins.cartorio.controllers;
+package com.lmmartins.cartorio.apis;
 
 import com.lmmartins.cartorio.models.Office;
-import com.lmmartins.cartorio.repositories.IOfficeRepository;
+import com.lmmartins.cartorio.services.OfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.*;
 
+@Controller
 @RestController
 @RequestMapping("/v1/offices")
-public class OfficeControllers {
+public class OfficeAPI {
+
     @Autowired
-    private IOfficeRepository repository;
+    private OfficeService service;
 
     @DeleteMapping("/{officeId}")
     public ResponseEntity deleteOffice(@PathVariable("officeId") Long officeId){
-        repository.deleteById(officeId);
-        return noContent().build();
+        return ok().build();
     }
 
     @GetMapping("/{officeId}")
     public ResponseEntity getOfficeById(@PathVariable("officeId") Long officeId){
-        Optional<Office> office = repository.findById(officeId);
-        return ok().body(office);
+        return ok().build();
     }
 
     @GetMapping
     public ResponseEntity getOffices(){
-        List<Office> office = repository.findAll();
-        return ok().body(office);
+        return ok(service.getOffices());
     }
 
     @PostMapping
     public ResponseEntity createOffice(@RequestBody Office office){
-        Long officeId = repository.save(office).getId();
-        return created(null).body(officeId);
+        return ok(service.createOffice(office));
     }
 
     @PutMapping("/{officeId}")
-    public ResponseEntity updateOffice(@PathVariable("officeId") Long officeId, @RequestBody Office office){
+    public ResponseEntity updateOfficeById(@PathVariable("officeId") Long officeId, @RequestBody Office office){
         return ok().build();
     }
 }

@@ -16,14 +16,13 @@ public class Address {
     private String state;
 
     //Constructors
+    public Address() {}
+
     public Address(Long id, String street, String city, String state) {
         this.id = id;
         this.street = street;
         this.city = city;
         this.state = state;
-    }
-
-    public Address() {
     }
 
     // Getters e Setters

@@ -1,0 +1,4 @@
+INSERT INTO address (street, city, state) VALUES
+  ('Vicente Pinzon', 'Vila Olimpía', 'São Paulo'),
+  ('Juazeiro', 'Santo André', 'São Paulo'),
+  ('Luís Ricardo', 'Botafogo', 'Rio de Janeiro');
