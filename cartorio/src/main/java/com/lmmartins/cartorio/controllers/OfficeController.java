@@ -1,5 +1,6 @@
 package com.lmmartins.cartorio.controllers;
 
+import com.lmmartins.cartorio.dto.CertificateDTO;
 import com.lmmartins.cartorio.models.Certificate;
 import com.lmmartins.cartorio.models.Office;
 import com.lmmartins.cartorio.services.CertificateService;
@@ -25,8 +26,10 @@ public class OfficeController {
     }
 
     @GetMapping("/associate/{officeId}")
-    public String getCertificatesToAssociate(Model model) {
+    public String getCertificatesToAssociate(Model model, @PathVariable Long officeId) {
         model.addAttribute("certificates", certificateService.getCertificates());
+        model.addAttribute("selectedCertificate", new CertificateDTO());
+        model.addAttribute("officeId", officeId);
         return "certificate_form";
     }
 
@@ -46,7 +49,7 @@ public class OfficeController {
         }
     }
 
-//  Ações do formulário.
+//  Ações.
     @PostMapping("/create")
     public String createOfficeSubmit(@ModelAttribute Office office) {
         officeService.createOffice(office);
@@ -54,13 +57,25 @@ public class OfficeController {
     }
 
     @PostMapping("/associate/{officeId}")
-    public String associateCertificate(@ModelAttribute Long certificateId, Long officeId) {
-        certificateService.associateCertificate(certificateId, officeId);
+    public String associateCertificate(
+            @ModelAttribute("selectedCertificate") CertificateDTO selectedCertificate,
+            @PathVariable("officeId") Long officeId
+    ) {
+        certificateService.associateCertificate(selectedCertificate.getId(), officeId);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{officeId}")
+    public String deleteOffice(@PathVariable("officeId") Long officeId) {
+        if (!officeService.existOffice(officeId)) {
+            throw new IllegalArgumentException("Invalid Office.");
+        }
+        officeService.deleteOfficeById(officeId);
         return "redirect:/";
     }
 
     @PostMapping("/edit/{officeId}")
-    public String updateOfficeSubmit(@ModelAttribute Office office, @PathVariable Long officeId) {
+    public String updateOfficeSubmit(@ModelAttribute("office") Office office, @PathVariable("officeId") Long officeId) {
         officeService.updateOfficeById(officeId,office);
         return "redirect:/";
     }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificates</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+</head>
+<body>
+<table class="table-wrapper">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Office</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <th:block th:each="certificate : ${certificates}">
+    <tr>
+      <td th:text="${certificate.name}"/></td>
+      <td th:text="${certificate.office.name}"></td>
+      <td>
+        <ul>
+          <li><a th:href="@{/}"><img th:src="@{/images/remove.svg}"/></a></li>
+        </ul>
+      </td>
+    </tr>
+  </th:block>
+</table>
+</body>
+</html>

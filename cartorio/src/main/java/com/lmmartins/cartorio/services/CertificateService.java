@@ -26,6 +26,10 @@ public class CertificateService {
         return client.getCertificates();
     }
 
+    public List<Certificate> getCertificatesByOfficeId(Long officeId) {
+        return repository.findAllCertificatesByOfficeId(officeId);
+    }
+
     public void associateCertificate(Long certificateId, Long officeId) {
         Office office = service.getOfficeById(officeId);
         CertificateDTO certificateDTO = client.getCertificateById(certificateId);

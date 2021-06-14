@@ -1,0 +1,21 @@
+:root {
+    --red-darker-color: #c0392b;
+    --red-lighter-color: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+}

@@ -1,9 +1,5 @@
 package com.lmmartins.cartorio.dto;
 
-import com.lmmartins.cartorio.models.Office;
-
-import javax.persistence.*;
-
 /*
     Classe responsável pela Certidão.
  */
@@ -13,6 +9,9 @@ public class CertificateDTO {
     private String nome;
 
 //  Construtores
+    public CertificateDTO() {
+    }
+
     public CertificateDTO(Long id, String nome) {
         this.id = id;
         this.nome = nome;
@@ -33,5 +32,13 @@ public class CertificateDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "CertificateDTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
     }
 }

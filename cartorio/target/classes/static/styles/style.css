@@ -1,0 +1,95 @@
+@import './config.css';
+
+.header {
+    background-color: var(--red-darker-color);
+    padding: 8px;
+}
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: var(--red-lighter-color);
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: var(--red-darker-color);
+  text-decoration: underline;
+}
+.title {
+    color: white;
+}
+.create-action {
+    text-align: right;
+    margin: 1.5% 3% 0%;
+}
+.table-wrapper {
+    margin: 1.5% 3% 3%;
+}
+
+.table-wrapper table {
+    border-collapse: collapse;
+}
+
+.table-wrapper td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.table-wrapper td ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-wrapper td ul li img {
+    max-width: 25px;
+}
+
+.form-wrapper {
+    margin: 3%;
+    padding: 3%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.form-wrapper input {
+    width: 400px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.buttons-wrapper {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttons-wrapper input {
+    border: 1px solid  rgba(0, 0, 0, 0.2);
+    background-color: var(--red-lighter-color);
+    color: #fff;
+    width: 150px;
+    padding: 10px;
+}
+
+.buttons-wrapper input:hover {
+    background-color: var(--red-darker-color);
+    transition: .5s;
+}
