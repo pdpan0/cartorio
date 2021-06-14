@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="pt" >
+<head>
+    <meta charset="UTF-8">
+    <title>Associate Certificate</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <h3 class="title">Papers Please</h3>
+</header>
+<ul class="breadcrumb">
+    <li><a href="/">Offices</a></li>
+    <li>Associate certificate</li>
+</ul>
+<form action="#" th:action="@{/associate}" th:object="${certificates}" method="post" class="form-wrapper">
+    <label th:for="certificates">Certificados</label>
+    <div class="buttons-wrapper">
+        <input type="submit" value="Submit" /><input type="reset" value="Reset" />
+    </div>
+</form>
+</body>
+</html>

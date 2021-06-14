@@ -17,19 +17,20 @@ public class AddressService {
     public Response deleteAddressById(Long addressId) {
         Optional<Address> address = repository.findById(addressId);
         if (address.isEmpty()) {
-            return new Response(404, "Not found the office.");
+            return new Response(false,404,"Not found the office.");
         }
         else {
             try {
                 repository.deleteById(addressId);
-                return new Response(200, null);
+                return new Response(true,200, null);
             } catch (Exception e) {
-                return new Response(500, "Internal error.");
+                System.out.println(e.getMessage());
+                return new Response(false,500, "Internal error.");
             }
         }
     }
 
-    public void updateAddressById(Long addressId, Address address){
+    public Response updateAddressById(Long addressId, Address address){
         Address updatedAddress = new Address(
                 addressId,
                 address.getStreet(),
@@ -39,16 +40,18 @@ public class AddressService {
 
         try {
             repository.save(updatedAddress);
+            return new Response(true, 200, null);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return new Response(false, 500, null);
         }
     }
 
-    public Long createAddress(Address address){
+    public Response createAddress(Address address){
         try {
-            return repository.save(address).getId();
+            return new Response(true, 200,null, repository.save(address).getId());
         } catch (Exception e) {
-            return null;
+            return new Response(false, 500, null);
         }
     }
 

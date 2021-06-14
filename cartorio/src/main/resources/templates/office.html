@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Office</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
 </head>
 <body>
-<h1 th:text="${offices}" />
+<header class="header">
+    <h3 class="title">Papers Please</h3>
+</header>
+<ul class="breadcrumb">
+    <li>Offices</li>
+</ul>
+<div class="create-action">
+    <a th:href="@{/create}">Create new office</a>
+</div>
+<table class="table-wrapper">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <th:block th:each="office : ${offices}">
+        <tr>
+            <td><a th:href="@{'/edit/'+${office.id}}" th:text="${office.name}"/></td>
+            <td th:text="${office.address.street}"></td>
+            <td th:text="${office.address.city}"></td>
+            <td th:text="${office.address.state}"></td>
+            <td>
+                <ul>
+                    <li><a th:href="@{/associate}">Associar um documento</a></li>
+                    <li><img th:src="@{/images/remove.svg}"/></li>
+                </ul>
+            </td>
+        </tr>
+    </th:block>
+</table>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>New Office</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <h3 class="title">Papers Please</h3>
+</header>
+<ul class="breadcrumb">
+    <li><a href="/">Offices</a></li>
+    <li>Create a office</li>
+</ul>
+    <form action="#" th:action="@{/create}" th:object="${office}" method="post" class="form-wrapper">
+        <label th:for="officeName">Name</label>
+        <input id="officeName" type="text" th:field="*{name}" />
+        <label th:for="officeStreet">Street</label>
+        <input id="officeStreet" type="text" th:field="*{address.street}" />
+        <label th:for="officeCity">City</label>
+        <input id="officeCity" type="text" th:field="*{address.city}" />
+        <label th:for="officeState">State</label>
+        <input id="officeState" type="text" th:field="*{address.state}" />
+        <div class="buttons-wrapper">
+            <input type="submit" value="Submit" /><input type="reset" value="Reset" />
+        </div>
+    </form>
+</body>
