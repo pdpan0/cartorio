@@ -6,6 +6,13 @@
     <link th:href="@{/styles/style.css}" rel="stylesheet" />
 </head>
 <body>
+<header class="header">
+  <h3 class="title">Papers Please</h3>
+</header>
+<ul class="breadcrumb">
+  <li><a href="/">Offices</a></li>
+  <li>Certificates</li>
+</ul>
 <table class="table-wrapper">
   <thead>
   <tr>
@@ -20,7 +27,7 @@
       <td th:text="${certificate.office.name}"></td>
       <td>
         <ul>
-          <li><a th:href="@{/}"><img th:src="@{/images/remove.svg}"/></a></li>
+          <li><a th:href="@{'/delete/'+${certificate.id}}"><img th:src="@{/images/remove.svg}"/></a></li>
         </ul>
       </td>
     </tr>

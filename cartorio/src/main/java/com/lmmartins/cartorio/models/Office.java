@@ -1,6 +1,10 @@
 package com.lmmartins.cartorio.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.util.List;
 
 /*
     Classe responsável pelo Cartório.
@@ -16,7 +20,8 @@ public class Office {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "address_id")
     private Address address;
-
+    @OneToMany(mappedBy = "office", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+    private List<Certificate> certificates;
 /*
     Configurações da coluna.
     cascade -> é utilizado para reduzir operações no H2.

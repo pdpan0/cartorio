@@ -1,5 +1,8 @@
 package com.lmmartins.cartorio.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 /*
@@ -14,7 +17,6 @@ public class Certificate {
     @Column(nullable = false)
     private String name;
     @ManyToOne
-    @JoinColumn(name = "office_id")
     private Office office;
 
 //  Constructors

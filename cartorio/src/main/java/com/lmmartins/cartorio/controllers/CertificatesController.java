@@ -20,4 +20,10 @@ public class CertificatesController {
         model.addAttribute("certificates", certificateService.getCertificatesByOfficeId(officeId));
         return "certificate";
     }
+
+    @GetMapping("/delete/{certificateId}")
+    public String deleteCertificateById(@PathVariable("certificateId") Long certificateId) {
+            certificateService.deleteCertificateById(certificateId);
+        return "redirect:/certificates";
+    }
 }
